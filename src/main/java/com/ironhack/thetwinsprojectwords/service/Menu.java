@@ -11,10 +11,13 @@ import java.util.Scanner;
 public class Menu {
     private final Scanner scanner;
     private final PlayerService playerService;
+    private final Game game;
+
+    public static Player currentPlayer;
 
     public void intro (){
         welcomeBanner();
-        playerSelection();
+        currentPlayer = playerSelection();
     }
 
     public void generalMenu(){
@@ -31,7 +34,7 @@ public class Menu {
         try {
             switch (input){
                 case "0" -> {
-
+                    game.play();
                 }
                 case "1" -> {
                     playerSelection();
@@ -66,7 +69,7 @@ public class Menu {
                 """);
     }
 
-    public void playerSelection(){
+    public Player playerSelection(){
         Player chosenPlayer = null;
 
         System.out.println("""
@@ -113,6 +116,7 @@ public class Menu {
                 """);
         System.out.println(chosenPlayer);
 
+        return chosenPlayer;
     }
 
 

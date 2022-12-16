@@ -18,12 +18,14 @@ public class Player {
     private String password;
     private int score;
     private int maxScore;
+    private int accumulatedScore;
 
     public Player(String name, String password) {
         this.name = name;
         this.password = password;
         this.score = 0;
         this.maxScore = 0;
+        this.accumulatedScore = 0;
     }
 
     @Override
@@ -35,6 +37,7 @@ public class Player {
                 "       password = " + "\uD83D\uDC7D \uD83D\uDC7D \uD83D\uDC7D \uD83D\uDC7D \uD83D\uDC7D" + "\n" +
                 "       score=" + score + "\n" +
                 "       maxScore=" + maxScore + "\n" +
+                "       accumulatedScore=" + accumulatedScore + "\n" +
                 "******** ***** *** ** * *\n";
     }
 }

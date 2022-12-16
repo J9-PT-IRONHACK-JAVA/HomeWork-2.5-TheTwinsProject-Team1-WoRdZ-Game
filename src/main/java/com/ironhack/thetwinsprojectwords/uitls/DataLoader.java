@@ -18,10 +18,12 @@ public class DataLoader {
     private final PlayerRepository playerRepository;
 
     @EventListener(ApplicationReadyEvent.class)
-    public void leadData(){
+    public void loadData(){
         log.info("loading demo data");
         var player1 = new Player("iAmPlayer1", "123456");
         playerRepository.save(player1);
     }
+
+
 
 }
