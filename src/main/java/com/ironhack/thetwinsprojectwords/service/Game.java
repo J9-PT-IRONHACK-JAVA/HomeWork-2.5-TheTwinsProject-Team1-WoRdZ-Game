@@ -20,6 +20,8 @@ public class Game {
         utils.clearScreen();
         utils.printWithColor("\nNEW GAME", ConsoleColors.BLUE_BOLD);
         var player = "Pau"; //Menu.currentPlayer;
+
+        var gameMode = "AUTO"; // TODO Choose game mode: Auto or Manual
         var round = 1;
         var totalRounds = 5;
         var gameScore = 0;
@@ -31,9 +33,15 @@ public class Game {
             Round %s/10 for Player: %s""", round, player);
             utils.printWithColor("\n" + welcome + "\n", ConsoleColors.BLUE);
 
-            var referenceWord = wordService.generateReferenceWord();
+            var referenceWord = "";
+            if (gameMode.equals("AUTO")) {
+                referenceWord = wordService.generateReferenceWord();
+            } else {
+                System.out.println("Please type your Reference WORD:");
+                referenceWord = scanner.next().trim().toLowerCase();
+                System.out.println("\nOK, now try to guess a related word\n");
+            }
             utils.printWithColor("WORD: " + referenceWord, ConsoleColors.WHITE_BOLD_BRIGHT);
-
             var over = false;
             var leftAttempts = 3;
             while (!over) {
