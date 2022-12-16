@@ -1,6 +1,6 @@
 package com.ironhack.thetwinsprojectwords.controller;
 
-import com.ironhack.thetwinsprojectwords.dto.Results;
+//import com.ironhack.thetwinsprojectwords.dto.Results;
 import com.ironhack.thetwinsprojectwords.dto.WordDTO;
 import com.ironhack.thetwinsprojectwords.proxy.WordsProxy;
 import com.ironhack.thetwinsprojectwords.service.WordService;

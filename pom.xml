@@ -51,6 +51,13 @@
             <artifactId>reactor-test</artifactId>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>net.datafaker</groupId>
+            <artifactId>datafaker</artifactId>
+            <version>1.7.0</version>
+        </dependency>
+
     </dependencies>
     <dependencyManagement>
         <dependencies>
