@@ -1,6 +1,7 @@
 package com.ironhack.thetwinsprojectwords;
 
 import com.ironhack.thetwinsprojectwords.proxy.WordsProxy;
+import com.ironhack.thetwinsprojectwords.service.Game;
 import com.ironhack.thetwinsprojectwords.service.Menu;
 import com.ironhack.thetwinsprojectwords.service.WordService;
 import lombok.RequiredArgsConstructor;
@@ -21,16 +22,23 @@ public class TheTwinsProjectWordsApplication implements CommandLineRunner {
     }
 
     private final WordService wordService;
-    private final WordsProxy wordsProxy;
+    private final Game game;
     private final Menu menu;
     private final Scanner scanner;
 
     @Override
     public void run(String... args) throws Exception {
-        menu.intro();
-        menu.generalMenu();
-        
+//        menu.intro();
+//        menu.generalMenu();
 
-        scanner.close();
+        game.play();
+
+
+//        System.out.println(wordService.generateReferenceWord());
+//        System.out.println(wordService.convertResultsIntoStrings(
+//                wordService.shortenResultsToCompare(wordService.getAllRelatedWords("cow"), 6)));
+
+
+        //scanner.close();
     }
 }

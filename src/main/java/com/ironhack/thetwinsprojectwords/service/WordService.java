@@ -3,6 +3,7 @@ package com.ironhack.thetwinsprojectwords.service;
 import com.ironhack.thetwinsprojectwords.dto.WordDTO;
 import com.ironhack.thetwinsprojectwords.proxy.WordsProxy;
 import lombok.RequiredArgsConstructor;
+import net.datafaker.Faker;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -39,9 +40,8 @@ public class WordService {
         } return listOfWords;
     }
 
-    public boolean compareAnswer(String inputWord){
-        var referenceWord = generateReferenceWord();
-        var maxWords = 6;
+    public boolean compareAnswer(String inputWord, String referenceWord){
+        var maxWords = 12;
         var listOfOptions = convertResultsIntoStrings(shortenResultsToCompare(getAllRelatedWords(referenceWord), maxWords));
         boolean match = false;
         for (String wordOption : listOfOptions){
@@ -54,10 +54,9 @@ public class WordService {
     }
 
     public String generateReferenceWord(){
-
-        //TODO Crear un faker de palabras
-
-        return "cow";
+        Faker faker = new Faker();
+        String referenceWord = faker.animal().name();
+        return referenceWord;
     }
 
 
