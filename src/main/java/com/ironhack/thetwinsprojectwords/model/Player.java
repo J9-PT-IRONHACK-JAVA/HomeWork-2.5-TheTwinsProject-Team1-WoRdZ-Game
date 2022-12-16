@@ -15,11 +15,26 @@ public class Player {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+    private String password;
     private int score;
     private int maxScore;
 
-    public Player(String name) {
+    public Player(String name, String password) {
         this.name = name;
+        this.password = password;
+        this.score = 0;
+        this.maxScore = 0;
     }
 
+    @Override
+    public String toString() {
+        return "******** ***** *** ** * *\n" +
+                "   Player: \n" +
+                "       id = " + id + "\n" +
+                "       name = " + name + "\n" +
+                "       password = " + "\uD83D\uDC7D \uD83D\uDC7D \uD83D\uDC7D \uD83D\uDC7D \uD83D\uDC7D" + "\n" +
+                "       score=" + score + "\n" +
+                "       maxScore=" + maxScore + "\n" +
+                "******** ***** *** ** * *\n";
+    }
 }

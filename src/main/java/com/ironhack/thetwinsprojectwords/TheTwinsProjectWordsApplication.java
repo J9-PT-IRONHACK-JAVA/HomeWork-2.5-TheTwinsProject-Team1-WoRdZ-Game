@@ -9,6 +9,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.openfeign.EnableFeignClients;
 
+import java.util.Scanner;
+
 @SpringBootApplication
 @EnableFeignClients
 @RequiredArgsConstructor
@@ -21,12 +23,14 @@ public class TheTwinsProjectWordsApplication implements CommandLineRunner {
     private final WordService wordService;
     private final WordsProxy wordsProxy;
     private final Menu menu;
+    private final Scanner scanner;
 
     @Override
     public void run(String... args) throws Exception {
-        //System.out.println(wordService.getAllRelatedWords("cow"));
-        //System.out.println(wordsProxy.getAllRelatedWords("cow"));
+        menu.intro();
+        menu.generalMenu();
+        
 
-        //menu.run();
+        scanner.close();
     }
 }
