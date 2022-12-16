@@ -6,14 +6,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
-@FeignClient(name = "words", url = "https://api.datamuse.com")
+@FeignClient(name = "relatedWords", url = "https://api.datamuse.com")
 public interface WordsProxy {
 
-//    @GetMapping("{word}")
-//    List<WordDTO> getAllRelatedWords(@PathVariable String word);
-
     @GetMapping("/words")
-    List<WordDTO> getAllRelatedWords(@RequestParam(name = "rel_trg") String rel_trg);
+    List<WordDTO> getAPIWords(@RequestParam(name = "rel_trg") String rel_trg);
 
 }
 
