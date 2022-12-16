@@ -22,16 +22,15 @@ public class TheTwinsProjectWordsApplication implements CommandLineRunner {
     }
 
     private final WordService wordService;
-    private final Game game;
     private final Menu menu;
     private final Scanner scanner;
 
     @Override
     public void run(String... args) throws Exception {
-//        menu.intro();
-//        menu.generalMenu();
+        menu.intro();
+        menu.generalMenu();
 
-        game.play();
+
 
 
 //        System.out.println(wordService.generateReferenceWord());
@@ -39,6 +38,6 @@ public class TheTwinsProjectWordsApplication implements CommandLineRunner {
 //                wordService.shortenResultsToCompare(wordService.getAllRelatedWords("cow"), 6)));
 
 
-        //scanner.close();
+        scanner.close();
     }
 }
