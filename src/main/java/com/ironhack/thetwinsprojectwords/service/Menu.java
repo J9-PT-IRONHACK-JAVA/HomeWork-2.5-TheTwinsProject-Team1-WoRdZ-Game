@@ -29,6 +29,7 @@ public class Menu {
     public void generalMenu(){
         var endGame="";
         while (!endGame.equals("exit")) {
+            utils.clearScreen();
             System.out.println("""
                     .
                     .
@@ -67,9 +68,12 @@ public class Menu {
                 }
             }
             currentPlayer.setScore(currentScore);
+            currentPlayer.setMaxScore(Math.max(currentPlayer.getMaxScore(), currentScore));
+            currentPlayer.setAccumulatedScore(currentPlayer.getAccumulatedScore() + currentScore);
             playerRepository.save(currentPlayer);
             utils.clearScreen();
         }
+        System.exit(0);
     }
 
     public void welcomeBanner(){
@@ -159,7 +163,7 @@ public class Menu {
         for (Map.Entry<Long, Integer> entry : maxScoresList.entrySet()) {
             list.add(entry.getValue());
         }
-        Collections.sort(list);
+        Collections.sort(list, Collections.reverseOrder());
         for (int num : list) {
             for (Map.Entry<Long, Integer> entry : maxScoresList.entrySet()) {
                 if (entry.getValue().equals(num)) {

@@ -36,20 +36,20 @@ public class DataLoader {
         playerRepository.save(player2);
 
         var player3 = new Player("PioB", "las_calles-siniestras_");
-        player3.setScore(5);
-        player3.setMaxScore(5);
+        player3.setScore(4);
+        player3.setMaxScore(4);
         player3.setAccumulatedScore(84);
         playerRepository.save(player3);
 
         var player4 = new Player("ruben", "ojosDePerroAzul");
         player4.setScore(4);
-        player4.setMaxScore(5);
+        player4.setMaxScore(4);
         player4.setAccumulatedScore(62);
         playerRepository.save(player4);
 
         var player5 = new Player("jHuenun", "lacaidadelacasakisinger");
-        player5.setScore(4);
-        player5.setMaxScore(5);
+        player5.setScore(2);
+        player5.setMaxScore(3);
         player5.setAccumulatedScore(57);
         playerRepository.save(player5);
 

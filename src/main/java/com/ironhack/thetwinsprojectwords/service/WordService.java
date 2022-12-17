@@ -43,7 +43,7 @@ public class WordService {
     }
 
     public boolean compareAnswer(String inputWord, String referenceWord){
-        var maxWords = 12;
+        var maxWords = 30;
         var listOfOptions = convertResultsIntoStrings(shortenResultsToCompare(getAllRelatedWords(referenceWord), maxWords));
         boolean match = false;
         for (String wordOption : listOfOptions){

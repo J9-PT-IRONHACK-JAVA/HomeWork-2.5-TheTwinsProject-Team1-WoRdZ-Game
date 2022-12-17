@@ -21,11 +21,11 @@ public class PlayerService {
     private final Scanner scanner;
 
     public Player selectExistingPlayer(){
-        utils.printWithColor("\nSee below the list of existing users... ", ConsoleColors.RED);
+        utils.printWithColor("\nSee below the list of existing users... ", ConsoleColors.BLUE);
 
         showExistingPlayers();
 
-        utils.printWithColor("\nPlease, select the desired player by introducing their corresponding id number...", ConsoleColors.RED);
+        utils.printWithColor("\nPlease, select the desired player by introducing their corresponding id number...", ConsoleColors.BLUE);
 
         var input = scanner.nextLine();
 
@@ -36,7 +36,7 @@ public class PlayerService {
     public void showExistingPlayers(){
         List<Player> existingPlayers = playerRepository.findAll();
             for (int i = 0; i < existingPlayers.size(); i++) {
-            utils.pause(200);
+            utils.pause(1000);
             System.out.println(existingPlayers.get(i));
         }
     }
@@ -68,7 +68,7 @@ public class PlayerService {
         System.out.println("Selected name = " + playerName);
 
         while (playerPassword == null){
-            System.out.println("Please introduce your password: ");
+            System.out.println("\nPlease introduce your password: ");
             var input = scanner.nextLine();
             var tentativePassword1 = input;
 
