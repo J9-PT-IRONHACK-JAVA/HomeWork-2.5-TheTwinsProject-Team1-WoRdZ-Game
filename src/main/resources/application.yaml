@@ -4,12 +4,20 @@ spring:
     username: ironhacker
     password: 1r0nh4ck3r
     driver-class-name: com.mysql.cj.jdbc.Driver
+  main:
+    banner-mode: "off"
 
   jpa:
-    show-sql: true # show the commands that are being executed
+    # show-sql: true # show the commands that are being executed
     #    generate-ddl : true
     hibernate:
-      ddl-auto: update # create, create-drop, validate, none, update ....
+      ddl-auto: create # create, create-drop, validate, none, update ....
+  # profiles:
+    # active: demo-data
 
 server:
   port: 8090
+
+logging:
+  level:
+    root: off
