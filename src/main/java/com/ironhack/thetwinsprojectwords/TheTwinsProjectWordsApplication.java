@@ -1,9 +1,6 @@
 package com.ironhack.thetwinsprojectwords;
 
-import com.ironhack.thetwinsprojectwords.proxy.WordsProxy;
-import com.ironhack.thetwinsprojectwords.service.Game;
 import com.ironhack.thetwinsprojectwords.service.Menu;
-import com.ironhack.thetwinsprojectwords.service.WordService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -21,23 +18,11 @@ public class TheTwinsProjectWordsApplication implements CommandLineRunner {
         SpringApplication.run(TheTwinsProjectWordsApplication.class, args);
     }
 
-    private final WordService wordService;
     private final Menu menu;
-    private final Scanner scanner;
 
     @Override
-    public void run(String... args) throws Exception {
+    public void run(String... args) {
         menu.intro();
         menu.generalMenu();
-
-
-
-
-//        System.out.println(wordService.generateReferenceWord());
-//        System.out.println(wordService.convertResultsIntoStrings(
-//                wordService.shortenResultsToCompare(wordService.getAllRelatedWords("cow"), 6)));
-
-
-        scanner.close();
     }
 }
