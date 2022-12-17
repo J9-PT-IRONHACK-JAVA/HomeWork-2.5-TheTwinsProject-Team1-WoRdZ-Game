@@ -57,7 +57,15 @@ public class Game {
                 } else {
                     leftAttempts = leftAttempts - 1;
                     utils.printWithColor(String.format("Wrong! You have %s more attempts\n", leftAttempts),ConsoleColors.YELLOW);
-                    if (leftAttempts == 0) over = true;
+                    if (leftAttempts == 0) {
+                        over = true;
+                        System.out.println("Wanna see some valid answers? [Yes (Y) / No (N)]");
+                        var hint = scanner.next().trim().toLowerCase();
+                        if (hint.equals("y")) {
+                            System.out.println("\n" + wordService.convertResultsIntoStrings(wordService.shortenResultsToCompare(wordService.getAllRelatedWords(referenceWord), 8)));
+                            utils.promptEnterKey();
+                        }
+                    }
                 }
             }
             if (inputWord.equalsIgnoreCase("--BACK")) break;
@@ -70,7 +78,7 @@ public class Game {
 
         utils.printWithColor("\nYour total score is: " + gameScore, ConsoleColors.BLUE_BOLD_BRIGHT);
 
-        utils.pause(1000);
+        utils.pause(2000);
         utils.promptEnterKey();
         return gameScore;
     }

@@ -12,8 +12,9 @@ public class Utils {
     private final Scanner scanner;
 
     public void promptEnterKey() {
+        Scanner enterKey = new Scanner(System.in);
         printWithColor("\nPress ENTER to continue...", ConsoleColors.BLUE);
-        scanner.nextLine();
+        enterKey.nextLine();
     }
 
     public void clearScreen(){
