@@ -43,7 +43,7 @@ public class Game {
 
             utils.printWithColor("WORD: " + referenceWord, ConsoleColors.WHITE_BOLD_BRIGHT);
             var over = false;
-            var leftAttempts = (totalRounds - round);
+            var leftAttempts = 3;
             var inputWord = "";
 
             while (!over) {
@@ -70,6 +70,7 @@ public class Game {
 
         utils.printWithColor("\nYour total score is: " + gameScore, ConsoleColors.BLUE_BOLD_BRIGHT);
 
+        utils.pause(1000);
         utils.promptEnterKey();
         return gameScore;
     }
