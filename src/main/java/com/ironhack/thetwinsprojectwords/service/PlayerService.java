@@ -2,7 +2,9 @@ package com.ironhack.thetwinsprojectwords.service;
 
 import com.ironhack.thetwinsprojectwords.model.Player;
 import com.ironhack.thetwinsprojectwords.repository.PlayerRepository;
+import com.ironhack.thetwinsprojectwords.uitls.ConsoleColors;
 import com.ironhack.thetwinsprojectwords.uitls.InputValidations;
+import com.ironhack.thetwinsprojectwords.uitls.Utils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -15,22 +17,26 @@ public class PlayerService {
 
     private final PlayerRepository playerRepository;
     private final InputValidations inputValidations;
+    private final Utils utils;
     private final Scanner scanner;
 
     public Player selectExistingPlayer(){
+        utils.printWithColor("\nSee below the list of existing users... ", ConsoleColors.RED);
 
         showExistingPlayers();
 
-        System.out.println("Please, select the desired player by introducing their corresponding id number...");
+        utils.printWithColor("\nPlease, select the desired player by introducing their corresponding id number...", ConsoleColors.RED);
+
         var input = scanner.nextLine();
 
-        var selectedPlayer = playerRepository.getReferenceById(Long.valueOf(input));
+        var selectedPlayer = playerRepository.findPlayerById(Long.valueOf(input));
 
         return selectedPlayer;
     }
     public void showExistingPlayers(){
         List<Player> existingPlayers = playerRepository.findAll();
             for (int i = 0; i < existingPlayers.size(); i++) {
+            utils.pause(200);
             System.out.println(existingPlayers.get(i));
         }
     }
@@ -77,7 +83,6 @@ public class PlayerService {
         }
 
         var newPlayer = new Player(playerName, playerPassword);
-        System.out.println(newPlayer);
 
         return  playerRepository.save(newPlayer);
     }

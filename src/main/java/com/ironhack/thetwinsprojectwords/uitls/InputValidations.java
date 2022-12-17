@@ -19,17 +19,19 @@ public class InputValidations {
     }
 
     public boolean validateExistingName(String name){
-        List<Player> existingPlayers = playerRepository.findAll();
+        var existingPlayers = playerRepository.findAll();
 
         List<String> existingNames = new ArrayList<>();
+
         for (int i = 0; i < existingPlayers.size(); i++) {
-            existingNames.add(existingPlayers.get(i).getName());
+            var n = existingPlayers.get(i).getName();
+            existingNames.add(n);
         }
 
         Boolean isExistingName = false;
 
-        for (String existingName : existingNames){
-            if (existingName == name){
+        for (int j = 0; j < existingNames.size(); j++) {
+            if (existingNames.get(j) == name){
                 isExistingName = true;
                 break;
             }

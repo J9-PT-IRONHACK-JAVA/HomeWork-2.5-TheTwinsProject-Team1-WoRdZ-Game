@@ -9,9 +9,9 @@ spring:
     # show-sql: true # show the commands that are being executed
     #    generate-ddl : true
     hibernate:
-      ddl-auto: update # create, create-drop, validate, none, update ....
-  profiles:
-    active: demo-data
+      ddl-auto: create # create, create-drop, validate, none, update ....
+  # profiles:
+    # active: demo-data
 
 server:
   port: 8090

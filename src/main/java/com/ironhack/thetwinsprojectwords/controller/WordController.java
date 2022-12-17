@@ -14,8 +14,6 @@ import java.util.List;
 @RequiredArgsConstructor
 @RequestMapping("/words")
 public class WordController {
-
-    private final WordService wordService;
     private final WordsProxy wordsProxy;
 
     @GetMapping("/{word}")
