@@ -15,13 +15,12 @@ public class Game {
     private final Scanner scanner;
     private final Utils utils;
 
-    public void play(){
+    public int play(String gameMode){
 
         utils.clearScreen();
         utils.printWithColor("\nNEW GAME", ConsoleColors.BLUE_BOLD);
-        var player = "Pau"; //Menu.currentPlayer;
+        var player = Menu.currentPlayer;
 
-        var gameMode = "AUTO"; // TODO Choose game mode: Auto or Manual
         var round = 1;
         var totalRounds = 5;
         var gameScore = 0;
@@ -30,13 +29,13 @@ public class Game {
 
             var welcome = String.format("""
             ********************************************
-            Round %s/10 for Player: %s""", round, player);
+            Round %s/%s for Player: %s""", round, totalRounds, player.getName());
             utils.printWithColor("\n" + welcome + "\n", ConsoleColors.BLUE);
 
             var referenceWord = "";
             if (gameMode.equals("AUTO")) {
                 referenceWord = wordService.generateReferenceWord();
-            } else {
+            } else if (gameMode.equals("MANUAL")) {
                 System.out.println("Please type your Reference WORD:");
                 referenceWord = scanner.next().trim().toLowerCase();
                 System.out.println("\nOK, now try to guess a related word\n");
@@ -44,18 +43,22 @@ public class Game {
             utils.printWithColor("WORD: " + referenceWord, ConsoleColors.WHITE_BOLD_BRIGHT);
             var over = false;
             var leftAttempts = 3;
+            var inputWord = "";
             while (!over) {
-                var inputWord = scanner.next().trim();
+                inputWord = scanner.next().trim();
                 if (wordService.compareAnswer(inputWord, referenceWord)) {
-                    System.out.println("BINGO! You got a match!");
+                    utils.printWithColor("BINGO! You got a match!", ConsoleColors.GREEN);
                     gameScore = gameScore + 1;
                     over = true;
+                } else if(inputWord.equalsIgnoreCase("--BACK")){
+                    break;
                 } else {
                     leftAttempts = leftAttempts - 1;
                     utils.printWithColor(String.format("Wrong! You have %s more attempts\n", leftAttempts),ConsoleColors.YELLOW);
                     if (leftAttempts == 0) over = true;
                 }
             }
+            if (inputWord.equalsIgnoreCase("--BACK")) break;
             round = round + 1;
             utils.pause(1000);
             if (round <= totalRounds) System.out.println("\nPrepare for next word...");
@@ -65,10 +68,8 @@ public class Game {
 
         utils.printWithColor("\nYour total score is: " + gameScore, ConsoleColors.BLUE_BOLD_BRIGHT);
 
-        //Menu.currentPlayer.setScore(gameScore);
-        //TODO Luego en el menú cuando acaba el juego guardar el player en el repo, para que quede con la Score.
-
         utils.promptEnterKey();
+        return gameScore;
     }
 
 }

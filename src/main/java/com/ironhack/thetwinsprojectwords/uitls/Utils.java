@@ -36,11 +36,19 @@ public class Utils {
     }
 
     public void printInvalidCommand(){
-        printWithColor("Please type a valid command. For more information, type 'help'", ConsoleColors.RED);
+        printWithColor("Please type a valid command", ConsoleColors.RED);
         promptEnterKey();;
     }
 
-
-
+    public void printLogo(){
+        printWithColor("""
+                 
+                 \\ \\        / /  |  __ \\   | |___  /
+                  \\ \\  /\\  / /__ | |__) |__| |  / /\s
+                   \\ \\/  \\/ / _ \\|  _  // _` | / / \s
+                    \\  /\\  / (_) | | \\ \\ (_| |/ /__\s
+                     \\/  \\/ \\___/|_|  \\_\\__,_/_____|
+                """, ConsoleColors.WHITE_BOLD_BRIGHT);
+    }
 
 }
