@@ -143,6 +143,7 @@ public class Menu {
                 """);
 
         System.out.println(chosenPlayer);
+        utils.promptEnterKey();
 
         return chosenPlayer;
     }
@@ -172,6 +173,7 @@ public class Menu {
             }
         }
         utils.printWithColor("HALL OF FAME", ConsoleColors.CYAN_BOLD);
+        utils.printWithColor("============================================================================================", ConsoleColors.CYAN_BOLD);
         utils.printWithColor(String.format("%-30s %-30s %-30s","Player Name","Max Score", "Accumulated Score"), ConsoleColors.CYAN_BOLD);
         utils.printWithColor("============================================================================================", ConsoleColors.CYAN_BOLD);
         for (Long id : rankedScores.keySet()) {

@@ -21,11 +21,11 @@ public class PlayerService {
     private final Scanner scanner;
 
     public Player selectExistingPlayer(){
-        utils.printWithColor("\nSee below the list of existing users... ", ConsoleColors.BLUE);
+        utils.printWithColor("\nAVAILABLE USERS: ", ConsoleColors.YELLOW);
 
         showExistingPlayers();
 
-        utils.printWithColor("\nPlease, select the desired player by introducing their corresponding id number...", ConsoleColors.BLUE);
+        utils.printWithColor("\nPlease, select the desired player by introducing their corresponding id number:", ConsoleColors.BLUE);
 
         var input = scanner.nextLine();
 
@@ -35,10 +35,17 @@ public class PlayerService {
     }
     public void showExistingPlayers(){
         List<Player> existingPlayers = playerRepository.findAll();
-            for (int i = 0; i < existingPlayers.size(); i++) {
-            utils.pause(1000);
-            System.out.println(existingPlayers.get(i));
+//        for (int i = 0; i < existingPlayers.size(); i++) {
+//            utils.pause(1000);
+//            System.out.println(existingPlayers.get(i));
+//        }
+        utils.printWithColor("=====================================", ConsoleColors.YELLOW);
+        utils.printWithColor(String.format("%-10s %-20s","Id", "Player Name"), ConsoleColors.YELLOW);
+        utils.printWithColor("=====================================", ConsoleColors.YELLOW);
+        for (Player player : existingPlayers) {
+            utils.printWithColor(String.format("%-10s %-20s", player.getId(),player.getName()), ConsoleColors.YELLOW);
         }
+        utils.printWithColor("=====================================", ConsoleColors.YELLOW);
     }
 
 
