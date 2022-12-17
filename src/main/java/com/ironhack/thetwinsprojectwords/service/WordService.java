@@ -24,8 +24,10 @@ public class WordService {
         var startRange = 0;
         float numOfWordsChosen = Math.min(maxWords, listOfAPIResults.size());
         var segment = Math.round(numOfWordsChosen/2);
+
         if (count % 2 == 0) startRange = count / 2 - segment + 1;
         else startRange = (count + 1) / 2 - segment + 1;
+
         List<WordDTO> shortListResults = new ArrayList<>();
         for (int i = startRange; i < (startRange+numOfWordsChosen); i++) {
             shortListResults.add(listOfAPIResults.get(i));

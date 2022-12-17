@@ -40,12 +40,14 @@ public class Game {
                 referenceWord = scanner.next().trim().toLowerCase();
                 System.out.println("\nOK, now try to guess a related word\n");
             }
+
             utils.printWithColor("WORD: " + referenceWord, ConsoleColors.WHITE_BOLD_BRIGHT);
             var over = false;
-            var leftAttempts = 3;
+            var leftAttempts = (totalRounds - round);
             var inputWord = "";
+
             while (!over) {
-                inputWord = scanner.next().trim();
+                inputWord = scanner.next().trim().toLowerCase();
                 if (wordService.compareAnswer(inputWord, referenceWord)) {
                     utils.printWithColor("BINGO! You got a match!", ConsoleColors.GREEN);
                     gameScore = gameScore + 1;

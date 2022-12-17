@@ -30,14 +30,17 @@ public class Menu {
         var endGame="";
         while (!endGame.equals("exit")) {
             System.out.println("""
-                    >>> >> > >
+                    .
+                    .
+                    ..
+                    ...
                     How would you like to proceed?...
                                     
                     [1] Start a new WoRdZ game - ARCADE
                     [2] Start a new WoRdZ game - MANUAL
                     [3] Show HALL OF FAME
                     [4] Change player
-                    [5] EXIT           
+                    [5] EXIT
                     """);
 
             var input = scanner.nextLine();
@@ -57,7 +60,7 @@ public class Menu {
                 }
                 case "5" -> {
                     endGame = "exit";
-                    //System.exit(0);
+                    System.exit(0);
                 }
                 default -> {
                     System.out.println("Wrong input. Please type a valid numbered option");
@@ -70,58 +73,79 @@ public class Menu {
     }
 
     public void welcomeBanner(){
+        utils.clearScreen();
 
         utils.printLogo();
 
         System.out.println("""
-                
-                ******** ***** *** ** * *
-                            Welcome,
-                        ... let's play...
-                            
-                            WoRdZ!!!
-                ******** ***** *** ** * *
+
+                ******** ***** *** ** * ** *** ***** ********
+                                    Welcome,
+                                ... let's play...
+                """);
+
+        utils.printWithColor("""
+                                    WoRdZ!!!
+                """, ConsoleColors.BLUE_BOLD);
+
+        System.out.println("""
+                ******** ***** *** ** * ** *** ***** ********
                 """);
     }
 
     public Player playerSelection(){
         Player chosenPlayer = null;
 
-        while (chosenPlayer==null) {
+        while (chosenPlayer == null){
             System.out.println("""
-                    >>> >> > >
-                    How would you like to proceed?...
-                                    
-                    [0] Use an existing player
-                    [1] Create a New Player
-                                    
-                    """);
+                .
+                .
+                ..
+                ...
+                How would you like to proceed?...
+                
+                [0] Use an existing player
+                [1] Create a New Player
+                
+                """);
             var input = scanner.nextLine();
 
+            try {
+                switch (input){
+                    case "0" -> {
+                        utils.clearScreen();
+                        var playerFromList = playerService.selectExistingPlayer();
+                        chosenPlayer = playerFromList;
+                    }
+                    case "1" -> {
+                        utils.clearScreen();
+                        var newPlayer = playerService.createNewPlayer();
+                        chosenPlayer = newPlayer;
+                    }
+                }
 
-            switch (input) {
-                case "0" -> {
-                    chosenPlayer = playerService.selectExistingPlayer();
-                }
-                case "1" -> {
-                    chosenPlayer = playerService.createNewPlayer();
-                }
-                default -> {
-                    System.out.println("Wrong input. Please introduce either '0' or '1'.\n");
-                }
+            } catch (IllegalArgumentException e){
+                System.out.println("Wrong input. Please introduce either '0' or '1'.\n");
+                e.getMessage();
             }
-
-            System.out.println("""
-                    ***** *** ** * *
-                    The chosen player is...
-                    """);
-            System.out.println(chosenPlayer);
         }
+
+        System.out.println("""
+                .
+                .
+                ..
+                ...
+                The chosen player is...
+                """);
+
+        System.out.println(chosenPlayer);
+
         return chosenPlayer;
     }
 
 
     public void hallOfFame(){
+        utils.clearScreen();
         var allPlayers = playerRepository.findAll();
         var maxScoresList = new HashMap<Long, Integer>();
 
